@@ -878,11 +878,11 @@ def decode(estimator,
         result["outputs"], targets_vocabulary(vocabulary))
 
     scores = result['scores'][0]
-    scores = scores[[6136, 5676, 1176]].tolist() #false weak true
+    scores = scores[[6136, 5676, 1176, 7163]].tolist() #false weak true neutral
     scores = [float(score) for score in scores]
     probs = torch.nn.functional.log_softmax(torch.from_numpy(np.array(scores)))
     score_string_list = probs.tolist()
-    output_string = f'{output_string}\t{score_string_list[0]}\t{score_string_list[1]}\t{score_string_list[2]}'
+    output_string = f'{output_string}\t{score_string_list[0]}\t{score_string_list[1]}\t{score_string_list[2]}\t{score_string_list[3]}'
     decodes.append(output_string)
     if i & (i - 1) == 0:
       # LOG every power of 2.
